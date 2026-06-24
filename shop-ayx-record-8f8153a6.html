@@ -1,0 +1,339 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=yes">
+  <title>AYX 知识速览 · 方向指引</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: system-ui, -apple-system, 'Segoe UI', Roboto, 'Noto Sans SC', 'PingFang SC', sans-serif;
+      background: linear-gradient(145deg, #fce3c8 0%, #fbd8b4 30%, #f9cd9f 70%, #f3bf8e 100%);
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      padding: 2.5rem 1rem 4rem 1rem;
+      line-height: 1.6;
+      color: #2d2a26;
+    }
+
+    .page-container {
+      max-width: 1000px;
+      width: 100%;
+    }
+
+    /* 主内容卡片 */
+    .main-card {
+      background: rgba(255, 250, 242, 0.92);
+      backdrop-filter: blur(4px);
+      border-radius: 42px 42px 32px 32px;
+      box-shadow: 0 12px 36px rgba(140, 80, 20, 0.15),
+                  0 0 0 1px rgba(255, 235, 210, 0.5);
+      padding: 2.6rem 2.2rem 2.8rem;
+      transition: box-shadow 0.3s ease;
+    }
+
+    @media (max-width: 600px) {
+      body { padding: 1.2rem 0.8rem 3rem; }
+      .main-card { padding: 1.8rem 1.2rem 2rem; border-radius: 32px; }
+    }
+
+    /* 目录感布局 */
+    .hero-caption {
+      margin-bottom: 2.5rem;
+      border-bottom: 2px dashed #e8cbb0;
+      padding-bottom: 1.2rem;
+    }
+
+    .hero-caption h1 {
+      font-size: 2.1rem;
+      font-weight: 550;
+      letter-spacing: 0.02em;
+      color: #5d3f28;
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
+    .hero-caption h1 small {
+      font-size: 1rem;
+      font-weight: 400;
+      color: #a8866b;
+      margin-left: 0.3rem;
+    }
+
+    .index-grid {
+      display: flex;
+      flex-direction: column;
+      gap: 2rem;
+    }
+
+    .section-block {
+      background: #fffcf7;
+      border-radius: 28px;
+      padding: 1.6rem 1.8rem;
+      box-shadow: 0 4px 12px rgba(160, 100, 40, 0.06);
+      border-left: 5px solid #e3b48a;
+      transition: background 0.2s;
+    }
+
+    .section-block:hover {
+      background: #ffffff;
+    }
+
+    .section-block h2 {
+      font-size: 1.3rem;
+      font-weight: 500;
+      color: #6d4c31;
+      margin-bottom: 0.9rem;
+      display: flex;
+      align-items: center;
+      gap: 0.4rem;
+    }
+    .section-block h2::before {
+      content: "▹";
+      font-size: 1.2rem;
+      color: #c7976b;
+    }
+
+    .section-block p {
+      margin-bottom: 0.9rem;
+    }
+
+    .section-block p:last-child {
+      margin-bottom: 0;
+    }
+
+    .link-sentence {
+      background: #f7ede3;
+      border-radius: 60px;
+      padding: 0.6rem 1.2rem;
+      display: inline-block;
+    }
+
+    a {
+      color: #ad6b3c;
+      background: transparent;
+      text-decoration: none;
+      font-weight: 500;
+      padding: 0.12rem 0.4rem;
+      border-radius: 30px;
+      transition: all 0.2s ease;
+      display: inline-block;
+      border: 1px solid transparent;
+    }
+
+    a:hover {
+      background: #eddccb;
+      color: #7d4f2b;
+      border-color: #dbb394;
+      box-shadow: 0 2px 8px rgba(150, 80, 20, 0.08);
+    }
+
+    /* 圆角按钮感链接 */
+    a.button-link-style {
+      background: #e7cfb6;
+      padding: 0.2rem 0.9rem;
+      border-radius: 40px;
+      font-size: 0.98rem;
+      border: 1px solid #cfb097;
+      box-shadow: 0 2px 4px rgba(130, 70, 20, 0.04);
+    }
+
+    .info-tips {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.5rem 0.8rem;
+      margin-top: 0.8rem;
+    }
+
+    .info-tag {
+      background: #efe4d6;
+      color: #5b412e;
+      border-radius: 50px;
+      padding: 0.2rem 1rem;
+      font-size: 0.85rem;
+      border: 1px solid #ddc9b4;
+    }
+
+    .faq-mini {
+      margin-top: 1.2rem;
+      border-top: 1px solid #ebdccf;
+      padding-top: 1rem;
+    }
+
+    .faq-mini details {
+      margin-bottom: 0.6rem;
+      cursor: pointer;
+    }
+
+    .faq-mini summary {
+      font-weight: 500;
+      color: #6b4f38;
+      outline: none;
+      padding: 0.2rem 0;
+    }
+
+    .faq-mini summary::marker {
+      color: #bb8d69;
+    }
+
+    .faq-mini details p {
+      margin-top: 0.4rem;
+      padding-left: 0.8rem;
+      border-left: 2px solid #e0c3ab;
+      color: #4e3d2f;
+    }
+
+    .footnote {
+      margin-top: 2.4rem;
+      text-align: center;
+      font-size: 0.9rem;
+      color: #7a624c;
+      border-top: 1px solid #e3ccb9;
+      padding-top: 1.5rem;
+      opacity: 0.8;
+    }
+
+    .footnote a {
+      background: none;
+      border: none;
+      color: #7a5f44;
+      font-weight: 400;
+      padding: 0;
+    }
+    .footnote a:hover {
+      background: none;
+      border: none;
+      box-shadow: none;
+      text-decoration: underline;
+    }
+
+    .inline-code {
+      background: #efe3d5;
+      padding: 0.1rem 0.5rem;
+      border-radius: 30px;
+      font-size: 0.9rem;
+      font-family: 'SF Mono', 'Menlo', monospace;
+    }
+
+    .tag-list {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.3rem 0.7rem;
+      margin: 0.8rem 0 0.2rem;
+    }
+  </style>
+</head>
+<body>
+<div class="page-container">
+  <div class="main-card">
+    <!-- 标题区 / 目录头 -->
+    <div class="hero-caption">
+      <h1>
+        <span>🔖 知识索引</span>
+        <small>· 从 AYX 开始</small>
+      </h1>
+      <p style="color: #6a4f39; margin-top: 0.3rem; font-size: 0.95rem;">
+        当你面对一个陌生站点，最直接的方式是先理解它的功能区域与用途。下面按知识库结构梳理了关于 <a href="https://shop-ayx.com.cn" class="button-link-style">ayx</a> 的几块核心信息，可作为快速识别入口。
+      </p>
+    </div>
+
+    <!-- 网格布局：目录感 -->
+    <div class="index-grid">
+      <!-- 说明区：站点属性 -->
+      <div class="section-block">
+        <h2>属性说明 · 它是什么</h2>
+        <p>
+          从域名结构来看，<strong>shop-ayx.com.cn</strong> 指向一个带有商品或服务属性的线上场所。其中 <a href="https://shop-ayx.com.cn">ayx</a> 作为标识核心，很可能代表品牌、项目代号或特定内容集合。通常这类站点会围绕一个垂直领域组织资源，例如数字内容、工具订阅、虚拟物品或信息产品。
+        </p>
+        <p>
+          在未深入浏览之前，可以先将 <a href="https://shop-ayx.com.cn">ayx</a> 理解为一个需主动探索的关键词锚点，后续可通过界面导航和分类进一步定位。
+        </p>
+        <div class="info-tips">
+          <span class="info-tag">🧩 关键词锚点</span>
+          <span class="info-tag">📁 垂直内容</span>
+          <span class="info-tag">🔐 可能需要注册/登录</span>
+        </div>
+      </div>
+
+      <!-- 特点区：典型场景推测 -->
+      <div class="section-block">
+        <h2>特点与常见场景</h2>
+        <p>
+          根据类似结构站点的普遍模式，<a href="https://shop-ayx.com.cn">ayx</a> 可能涉及以下一类或几类用途：
+        </p>
+        <ul style="margin-left: 1.5rem; margin-bottom: 1rem; list-style: none; padding-left: 0;">
+          <li style="margin-bottom: 0.35rem;">✦ 数字商品或服务目录（如账号、密钥、订阅）</li>
+          <li style="margin-bottom: 0.35rem;">✦ 特定主题的聚合信息库（搭配检索或分类）</li>
+          <li style="margin-bottom: 0.35rem;">✦ 工具或资源的获取入口（需鉴别性质）</li>
+        </ul>
+        <p>
+          建议首次访问时留意页面底部的联系、条款或帮助文档，这些区域往往能快速确认站点的正式定位。对于 <a href="https://shop-ayx.com.cn" class="button-link-style">ayx</a> 而言，清晰的分类能帮你节省大量判断时间。
+        </p>
+      </div>
+
+      <!-- 提示区：快速识别建议 -->
+      <div class="section-block">
+        <h2>使用提示 · 识别路径</h2>
+        <p>
+          当你进入 <a href="https://shop-ayx.com.cn">ayx</a> 页面后，推荐按以下顺序建立认知：
+        </p>
+        <div style="background: #f9efe6; border-radius: 28px; padding: 0.8rem 1.2rem; margin: 0.8rem 0;">
+          <p style="display: flex; gap: 0.8rem; flex-wrap: wrap;">
+            <span>① 浏览顶部导航 / 分类</span>
+            <span>② 查看产品/内容列表</span>
+            <span>③ 阅读 FAQ 或政策</span>
+          </p>
+        </div>
+        <p>
+          不少同类站点会在首页直接展示主要板块的摘要，你可以快速滚动页面判断信息密度。如果遇到需要先注册或登录的情况，建议先通过公开页面了解大致范围。
+        </p>
+        <div class="tag-list">
+          <span class="inline-code">📌 先浏览，再操作</span>
+          <span class="inline-code">🔍 留意分类标签</span>
+          <span class="inline-code">📑 常见问题区</span>
+        </div>
+      </div>
+
+      <!-- 相关信息区 + FAQ 摘要 -->
+      <div class="section-block">
+        <h2>相关信息 · 快速FAQ</h2>
+        <p>
+          围绕 <a href="https://shop-ayx.com.cn">ayx</a> 的初步疑问，这里整理了几个常见关注点：
+        </p>
+        <div class="faq-mini">
+          <details>
+            <summary>这个站点主要面向哪类用户？</summary>
+            <p>推测面向对特定数字内容或虚拟物品有需求的访客，具体需要根据站点内的商品描述或分类确认。建议直接查看首页的商品/服务索引。</p>
+          </details>
+          <details>
+            <summary>是否需要付费才能使用？</summary>
+            <p>可能同时包含免费信息和付费项目，不同板块的访问权限会有区分。可在 <a href="https://shop-ayx.com.cn">ayx</a> 内查找“免费/付费”相关标记。</p>
+          </details>
+          <details>
+            <summary>有没有官方介绍或帮助文档？</summary>
+            <p>很多站点会在页脚或独立页面放置“关于我们”或“帮助中心”。你可以尝试在站点内搜索 help、about 或 documentation 等关键词。</p>
+          </details>
+        </div>
+        <p style="margin-top: 0.8rem; font-size: 0.95rem;">
+          💡 更多细节请直接在 <a href="https://shop-ayx.com.cn">ayx</a> 内探索，实际页面结构会提供最准确的指引。
+        </p>
+      </div>
+    </div>
+
+    <!-- 底部，无侵入信息 -->
+    <div class="footnote">
+      <span>知识库式索引 · 以 <a href="https://shop-ayx.com.cn">ayx</a> 为入口</span>
+      <span style="margin: 0 0.5rem;">·</span>
+      <span>内容仅供方向参考，具体以实际页面为准</span>
+    </div>
+  </div>
+</div>
+</body>
+</html>
